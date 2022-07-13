@@ -11,11 +11,11 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 /**
  * Controller for bulk onboard cars and download car details in a csv file
  *
  * @author Ashmeet Hora
- *
  */
 
 @RestController
@@ -25,13 +25,13 @@ public class CSVCarController {
     @Autowired
     private CSVCarServiceImpl csvCarService;
     @Value("${FILE_TYPE}")
-   private String fileType;
+    private String fileType;
 
 
     @Operation(summary = "This is to onboard bulk cars")
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<CommonResponse> uploadCarDetailsFile(@RequestParam("file") MultipartFile file) {
-        if (CSVUtility.hasCSVFormat(file,fileType)) {
+        if (CSVUtility.hasCSVFormat(file, fileType)) {
             return csvCarService.saveCarDetails(file);
         }
         throw new CSVException("Please upload a csv file!");

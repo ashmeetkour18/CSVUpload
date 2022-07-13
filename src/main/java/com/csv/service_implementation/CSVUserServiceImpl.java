@@ -32,9 +32,9 @@ public class CSVUserServiceImpl implements CSVUserService {
             List<User> users = userRepository.saveAll(usersDto.stream().map(userDto -> {
                 User user = User.builder().firstName(userDto.getFirstName()).lastName(userDto.getLastName()).address(userDto.getAddress()).email(userDto.getEmail()).mobileNo(userDto.getMobileNumber()).build();
                 roleRepository.findByRoleName(userDto.getRole()).ifPresentOrElse(user::setRole, () -> {
-                    throw new CSVException("Invalid file : User Role doesn't exist for user name " + userDto.getFirstName()+
+                    throw new CSVException("Invalid file : User Role doesn't exist for user name " + userDto.getFirstName() +
                             " with email" +
-                            " :"+userDto.getEmail());
+                            " :" + userDto.getEmail());
                 });
                 return user;
 

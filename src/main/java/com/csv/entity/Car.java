@@ -30,6 +30,6 @@ public class Car {
     private String colour;
     private Integer yearOfManufacture;
     @Column(columnDefinition = "boolean default false")
-    private boolean deleteStatus=false;
+    private boolean deleteStatus = false;
 
 }

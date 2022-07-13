@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
  * Controller to onboard bulk users
  *
  * @author Ashmeet Hora
- *
  */
 @RestController
 @RequestMapping("api/v1/users")

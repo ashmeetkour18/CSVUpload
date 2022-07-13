@@ -12,7 +12,7 @@
     <artifactId>csv-upload</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>csv-upload</name>
-    <description>Demo project for Spring Boot</description>
+    <description>csv bulk user and car onboard</description>
     <properties>
         <java.version>11</java.version>
     </properties>
