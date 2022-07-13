@@ -1,25 +1,21 @@
 package com.csv.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@ToString
 public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long inventoryId;
     private String regNumber;
     private String rto;
     private String registrationState;
@@ -33,5 +29,7 @@ public class Car {
     private String chassisNumber;
     private String colour;
     private Integer yearOfManufacture;
+    @Column(columnDefinition = "boolean default false")
+    private boolean deleteStatus=false;
 
 }

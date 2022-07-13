@@ -14,12 +14,11 @@ public class CarDto {
     private String rto;
     private String registrationState;
     private Integer registrationYear;
-  private String make;
-  private String model;
+    private String make;
+    private String model;
     private Integer mileage;
     private String bodyType;
     private Integer carScore;
-
     private String variant;
     private String chassisNumber;
     private String colour;

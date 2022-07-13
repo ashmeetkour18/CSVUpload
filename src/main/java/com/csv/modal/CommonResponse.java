@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Response {
-	private String message;
-	private Integer statusCode;
-	private Object data;
+public class CommonResponse {
+    private String message;
+    private Integer statusCode;
+    private Object data;
 }

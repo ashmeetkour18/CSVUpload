@@ -1,6 +1,6 @@
 package com.csv.exceptions;
 
-import com.csv.modal.Response;
+import com.csv.modal.CommonResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,10 +12,10 @@ import java.util.ArrayList;
 @RestControllerAdvice
 public class CSVExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(CSVException.class)
-    public ResponseEntity<Response> csvExceptionHandler(CSVException csvException) {
+    public ResponseEntity<CommonResponse> csvExceptionHandler(CSVException csvException) {
         String exceptionMessage = csvException.getMessage();
-        Response response =
-               Response.builder().statusCode(HttpStatus.UNAUTHORIZED.value()).data(new ArrayList<>()).message(exceptionMessage).build();
+        CommonResponse response =
+                CommonResponse.builder().statusCode(HttpStatus.UNAUTHORIZED.value()).data(new ArrayList<>()).message(exceptionMessage).build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
