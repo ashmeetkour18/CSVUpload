@@ -17,7 +17,9 @@ import java.util.List;
 
 public class CSVUtility {
 
-    private static final String[] FILE_HEADING = {"Registration Number", "Rto", "Registration " + "State", "Registration Year", "Mileage", "Make", "Model", "Body Type", "Car Score", "Variant", "Chassis " + "Number", "Colour", "Year Of Manufacture"};
+    private static final String[] FILE_HEADING = {"Inventory Id", "Registration Number", "Rto", "Registration " +
+            "State",
+            "Registration Year", "Mileage", "Make", "Model", "Body Type", "Car Score", "Variant", "Chassis " + "Number", "Colour", "Year Of Manufacture"};
 
     private CSVUtility() {
     }
@@ -29,7 +31,7 @@ public class CSVUtility {
 
     public static List<CarDto> csvToCarDto(MultipartFile file) {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8)); CSVParser csvParser = new CSVParser(bufferedReader, CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim())) {
-            return csvParser.getRecords().stream().map(i -> CarDto.builder().make(i.get(FILE_HEADING[5])).carScore(Integer.parseInt(i.get(FILE_HEADING[8]))).bodyType(i.get(FILE_HEADING[7])).chassisNumber(i.get(FILE_HEADING[10])).regNumber(i.get(FILE_HEADING[0])).colour(i.get(FILE_HEADING[11])).model(i.get(FILE_HEADING[6])).registrationState(i.get(FILE_HEADING[2])).registrationYear(Integer.parseInt(i.get(FILE_HEADING[3]))).mileage(Integer.parseInt(i.get(FILE_HEADING[4]))).yearOfManufacture(Integer.parseInt(i.get(FILE_HEADING[12]))).rto(i.get(FILE_HEADING[1])).variant(i.get(FILE_HEADING[9])).build()).toList();
+            return csvParser.getRecords().stream().map(i -> CarDto.builder().make(i.get(FILE_HEADING[6])).carScore(Integer.parseInt(i.get(FILE_HEADING[9]))).bodyType(i.get(FILE_HEADING[8])).chassisNumber(i.get(FILE_HEADING[11])).regNumber(i.get(FILE_HEADING[1])).colour(i.get(FILE_HEADING[12])).model(i.get(FILE_HEADING[7])).registrationState(i.get(FILE_HEADING[3])).registrationYear(Integer.parseInt(i.get(FILE_HEADING[4]))).mileage(Integer.parseInt(i.get(FILE_HEADING[5]))).yearOfManufacture(Integer.parseInt(i.get(FILE_HEADING[13]))).rto(i.get(FILE_HEADING[2])).variant(i.get(FILE_HEADING[10])).build()).toList();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             throw new CSVException("Invalid CSV file: please match all the headings in the file with," + Arrays.stream(FILE_HEADING).toList());
