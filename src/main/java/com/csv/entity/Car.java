@@ -16,6 +16,7 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long inventoryId;
+    @Column(unique = true)
     private String regNumber;
     private String rto;
     private String registrationState;

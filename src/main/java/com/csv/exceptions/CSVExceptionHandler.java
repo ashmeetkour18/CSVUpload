@@ -15,8 +15,8 @@ public class CSVExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<CommonResponse> csvExceptionHandler(CSVException csvException) {
         String exceptionMessage = csvException.getMessage();
         CommonResponse response =
-                CommonResponse.builder().statusCode(HttpStatus.UNAUTHORIZED.value()).data(new ArrayList<>()).message(exceptionMessage).build();
-        return new ResponseEntity<>(response, HttpStatus.OK);
+                CommonResponse.builder().statusCode(HttpStatus.BAD_REQUEST.value()).data(new ArrayList<>()).message(exceptionMessage).build();
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
 
