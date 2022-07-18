@@ -14,6 +14,10 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class CSVUtility {
 
@@ -61,6 +65,11 @@ public class CSVUtility {
         } catch (IOException e) {
             throw new CSVException("Unable to write data to a CSV file");
         }
+    }
+
+    public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+        Map<Object, Boolean> map = new ConcurrentHashMap<>();
+        return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 
     public static List<UserDto> csvToUserDto(MultipartFile file) {
